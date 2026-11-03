@@ -83,12 +83,15 @@ test(
 test(
   "vídeo mal configurado e glass demais reprovam com o motivo certo",
   { skip: !chrome },
-  async () => {
+  async (t) => {
     const { code, report } = await runPage("bad");
     assert.equal(code, 1);
     const rules = new Set(report.findings.map((f) => f.rule));
+    // video-lcp-frame só existe se o Chrome registrar o 1º frame do vídeo como LCP:
+    // o do macOS registra; o do runner Linux (vídeo sem som bloqueado, sem frame pintado) não.
+    if (report.lcp?.tag === "video") assert.ok(rules.has("video-lcp-frame"), "LCP é o vídeo sem poster");
+    else t.diagnostic(`LCP não foi o vídeo neste Chrome (${report.lcp?.tag ?? "sem LCP"}): video-lcp-frame não verificado`);
     for (const r of [
-      "video-lcp-frame",
       "video-poster",
       "video-autoplay-sound",
       "video-playsinline",
