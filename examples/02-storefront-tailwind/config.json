@@ -1,0 +1,16 @@
+{
+  "$comment": "Exemplo 02 — loja com Tailwind v4 (tokens no @theme). Figma fictício 'Loja Atlas'.",
+  "baseUrl": "http://localhost:5173",
+  "figma": { "fileKey": "EXEMPLO", "frames": { "plp-desktop": "1204:2", "plp-mobile": "1204:300" } },
+  "viewports": { "desktop": { "width": 1440, "height": 900 }, "mobile": { "width": 375, "height": 812 } },
+  "mobileMaxWidth": 767,
+  "font": { "family": "Inter", "fallbacks": ["Arial"], "probe": "Adicionar à sacola", "figmaFamily": "{family}" },
+  "figmaStyles": { "Neutral/900": "#111111", "Neutral/500": "#6b6b6b", "Neutral/200": "#e4e4e4", "Feedback/Sale": "#d6312b", "Neutral/50": "#f5f5f3" },
+  "tokens": {
+    "sources": ["examples/02-storefront-tailwind/src/styles/app.css"],
+    "ignore": [],
+    "palette": { "#ffffff": "branco · texto do selo 1204:97" },
+    "fontSizes": null,
+    "radii": null
+  }
+}

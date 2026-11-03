@@ -1,0 +1,28 @@
+{
+  "$comment": "Configuração da skill para ESTE projeto. Os scripts (audit, pixel, figref, perf) leem daqui o que muda de um site para outro. Para usar outro arquivo: PIXEL_CONFIG=caminho/config.json. Paleta = toda custom property --*: #hex em tokens.sources + tokens.palette (cores do Figma que ainda não viraram variável, com o node id).",
+  "baseUrl": "http://localhost:5173",
+  "figma": {
+    "fileKey": "<fileKey>",
+    "frames": { "desktop": "<node>", "mobile": "<node>" },
+    "prototype": null
+  },
+  "viewports": {
+    "desktop": { "width": 1440, "height": 900 },
+    "mobile": { "width": 390, "height": 844 }
+  },
+  "mobileMaxWidth": 767,
+  "font": {
+    "family": "Inter",
+    "fallbacks": ["Arial"],
+    "probe": "Texto curto que aparece na primeira dobra",
+    "figmaFamily": "{family}"
+  },
+  "figmaStyles": {},
+  "tokens": {
+    "sources": ["src/styles"],
+    "ignore": [],
+    "palette": { "#ffffff": "branco" },
+    "fontSizes": null,
+    "radii": null
+  }
+}

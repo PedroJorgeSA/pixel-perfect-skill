@@ -1,0 +1,10 @@
+{
+  "$comment": "Exemplo 03 — landing sem acesso ao Figma pelo MCP. figmaStyles = color styles lidos no painel Styles do Figma (modo visualização). figmaFamily: como o nome do Figma vira font-family (ex.: \"Grotesca {style0}\" transforma 'Standard Medium' em 'Grotesca Standard').",
+  "baseUrl": "http://127.0.0.1:4403",
+  "figma": { "fileKey": "EXEMPLO", "frames": { "desktop": "40:1" }, "prototype": "https://www.figma.com/proto/<fileKey>/<nome>?node-id=40-1&scaling=scale-down-width&content-scaling=fixed&hide-ui=1" },
+  "viewports": { "desktop": { "width": 1440, "height": 900 }, "mobile": { "width": 430, "height": 932 } },
+  "mobileMaxWidth": 767,
+  "font": { "family": "Arial", "fallbacks": ["Helvetica", "Liberation Sans"], "probe": "Pele que acorda descansada.", "figmaFamily": "{family}" },
+  "figmaStyles": { "Creme": "#fbf6ee", "Tinta": "#2e2a26", "Argila": "#e9a27a", "Ferrugem": "#b5532d", "Areia": "#f1e3cf", "Pedra": "#4a433c" },
+  "tokens": { "sources": ["examples/03-landing-sem-mcp/site/styles.css"], "ignore": [], "palette": {}, "fontSizes": null, "radii": null }
+}

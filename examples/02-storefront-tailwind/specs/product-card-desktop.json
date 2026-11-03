@@ -1,0 +1,13 @@
+{
+  "$comment": "Card da PLP. Depende do catálogo: se a API cair e nenhum card aparecer, o regress marca INFRA (exit 3), não FALHA.",
+  "url": "http://localhost:5173/camisetas",
+  "width": 1440,
+  "requires": "catalog",
+  "hide": "[data-dynamic-banner]",
+  "checks": [
+    { "name": "card · caixa", "node": "1204:88", "selector": "[data-product-card]", "expect": { "width": "312px", "border-radius": "8px", "padding-top": "12px" } },
+    { "name": "card · nome", "node": "1204:92", "selector": "[data-product-card] h3", "expect": { "font-size": "14px", "line-height": "20px", "color": "#111111", "font-weight": "400" } },
+    { "name": "card · preço", "node": "1204:94", "selector": "[data-product-card] p span", "expect": { "font-size": "16px", "font-weight": "700" } },
+    { "name": "selo de desconto", "node": "1204:97", "selector": "[data-product-card] .rounded-pill", "expect": { "background-color": "#d6312b", "border-radius": "999px", "height": "20px" } }
+  ]
+}

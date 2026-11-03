@@ -1,0 +1,16 @@
+{
+  "$comment": "Config do exemplo 01 (Figma fictício 'Café Aurora'). Rode os scripts com PIXEL_CONFIG=examples/01-landing-demo/config.json.",
+  "baseUrl": "http://127.0.0.1:4400",
+  "figma": { "fileKey": "EXEMPLO", "frames": { "hero-desktop": "12:340", "hero-mobile": "12:612" } },
+  "viewports": { "desktop": { "width": 1440, "height": 900 }, "mobile": { "width": 390, "height": 844 } },
+  "mobileMaxWidth": 767,
+  "font": { "family": "Arial", "fallbacks": ["Helvetica", "Liberation Sans"], "probe": "Café de origem, torrado na sexta.", "figmaFamily": "{family}" },
+  "figmaStyles": { "Ink/900": "#1f1d1a", "Cream/100": "#f6efe3", "Brand/Terracotta": "#c4572e" },
+  "tokens": {
+    "sources": ["examples/01-landing-demo/site/tokens.css"],
+    "ignore": [],
+    "palette": { "#ffffff": "branco · texto do CTA 12:351" },
+    "fontSizes": [16, 18, 20, 40, 46, 56, 64],
+    "radii": [24, 999]
+  }
+}

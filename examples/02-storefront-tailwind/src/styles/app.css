@@ -1,0 +1,18 @@
+/* Tailwind v4: os tokens do Figma viram variáveis do @theme (e classes text-ink, rounded-card…). */
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #111111; /* Neutral/900 */
+  --color-muted: #6b6b6b; /* Neutral/500 */
+  --color-line: #e4e4e4; /* Neutral/200 */
+  --color-sale: #d6312b; /* Feedback/Sale */
+  --color-surface: #f5f5f3; /* Neutral/50 */
+
+  --text-caption: 12px;
+  --text-body: 14px;
+  --text-price: 16px;
+  --text-title: 24px;
+
+  --radius-card: 8px;
+  --radius-pill: 999px;
+}

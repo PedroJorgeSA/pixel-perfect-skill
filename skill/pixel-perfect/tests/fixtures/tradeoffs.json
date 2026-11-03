@@ -1,0 +1,11 @@
+{
+  "entries": [
+    { "id": "glass", "kind": "backdrop-filter", "match": ".glass", "decision": "keep", "maxInViewport": { "mobile": 2, "desktop": 6 },
+      "costBudget": { "mobile": { "taskMs": 200 } } },
+    { "id": "hero-video", "kind": "video", "match": ".hero video", "decision": "keep",
+      "video": { "poster": true, "preload": ["none", "metadata"], "maxBytesBeforeInteraction": { "mobile": 1000000 }, "reducedMotion": "poster" },
+      "allowances": { "mobile": { "bytes.media": 1000000 } } },
+    { "id": "below-video", "kind": "video", "match": ".below video", "decision": "keep",
+      "video": { "poster": true, "preload": ["none"], "offscreenMaxBytes": 0 } }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "$comment": "Orçamento da camada C (perf.mjs). Valores de laboratório: mobile = Lighthouse-like (CPU 4×, 150 ms RTT, 1,6 Mbps). Folga extra só via trade-off aceito em tradeoffs.json. pages = rotas reais do site. bytes.font: some as faces da 1ª dobra (~65 KB por face variável woff2) e deixe margem para uma. No dev server, lcpMs/bytes.script/bytes.total/requests/tbtMs não valem (ignoreOnDev): meça com o build.",
+  "base": "http://localhost:5173",
+  "devServer": true,
+  "ignoreOnDev": [
+    "lcpMs",
+    "bytes.script",
+    "bytes.total",
+    "requests",
+    "tbtMs"
+  ],
+  "profiles": {
+    "mobile": {
+      "width": 430,
+      "height": 932,
+      "cpu": 4,
+      "network": "slow4g"
+    },
+    "desktop": {
+      "width": 1440,
+      "height": 900,
+      "cpu": 1,
+      "network": "none"
+    }
+  },
+  "pages": [
+    {
+      "name": "home",
+      "path": "/",
+      "profiles": [
+        "mobile",
+        "desktop"
+      ]
+    }
+  ],
+  "budgets": {
+    "mobile": {
+      "lcpMs": 4000,
+      "cls": 0.1,
+      "tbtMs": 600,
+      "requests": 90,
+      "bytes": {
+        "image": 900000,
+        "media": 0,
+        "font": 200000,
+        "script": 450000,
+        "total": 2000000
+      }
+    },
+    "desktop": {
+      "lcpMs": 2500,
+      "cls": 0.1,
+      "tbtMs": 300,
+      "requests": 110,
+      "bytes": {
+        "image": 1800000,
+        "media": 0,
+        "font": 200000,
+        "script": 450000,
+        "total": 3000000
+      }
+    }
+  },
+  "assets": {
+    "imageMaxBytes": 300000,
+    "imageMaxSide": 2560,
+    "pngOpaqueMaxBytes": 100000,
+    "videoMaxBytes": 4000000,
+    "orphanMaxBytes": 1000000
+  }
+}

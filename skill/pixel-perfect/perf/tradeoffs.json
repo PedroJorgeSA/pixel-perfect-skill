@@ -1,0 +1,5 @@
+{
+  "$comment": "Registro de trade-offs de estilo (camada T). Todo efeito caro que aparece na página — backdrop-filter, mix-blend-mode, filter: blur, <video> — precisa casar com uma entrada. decision: keep | off | remove (pode ser por perfil). Uma decisão 'keep' pode conceder folga no orçamento (allowances) e define o custo máximo aceito (costBudget, medido com `perf.mjs ab`). Prefira marcar o elemento com data-fx=\"<id>\" e usar [data-fx=<id>] no match: seletor por classe quebra quando o Tailwind muda.",
+  "strictSelectors": false,
+  "entries": []
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frame · Sérum Lume (desktop 1440)</title>
+<style>
+  /* Stand-in do frame 40:1 do Figma: medidas em px do frame de 1440. */
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: Arial, sans-serif; background: #fbf6ee; color: #2e2a26; width: 1440px; }
+  section { position: relative; }
+  .hero { height: 760px; background: #fbf6ee; }
+  .hero h1 { position: absolute; left: 120px; top: 220px; width: 640px; font-size: 72px; line-height: 80px; font-weight: 700; letter-spacing: -1.44px; }
+  .hero p { position: absolute; left: 120px; top: 420px; width: 520px; font-size: 22px; line-height: 32px; font-weight: 500; }
+  .hero .blob { position: absolute; right: 120px; top: 120px; width: 520px; height: 520px; border-radius: 999px; background: #e9a27a; }
+  .rotina { height: 620px; background: #2e2a26; color: #fbf6ee; }
+  .rotina h2 { position: absolute; left: 120px; top: 96px; font-size: 48px; line-height: 56px; font-weight: 700; }
+  .rotina ol { position: absolute; left: 120px; top: 220px; display: flex; gap: 40px; padding: 0; list-style: none; }
+  .rotina li { width: 373px; height: 300px; padding: 32px; border-radius: 24px; background: #4a433c; font-size: 20px; line-height: 28px; font-weight: 500; letter-spacing: 1px; }
+  .produtos { height: 680px; }
+  .produtos h2 { position: absolute; left: 120px; top: 96px; font-size: 48px; line-height: 56px; font-weight: 700; color: #b5532d; }
+  .produtos .card { position: absolute; top: 220px; width: 373px; height: 380px; border-radius: 24px; background: #f1e3cf; }
+</style>
+</head>
+<body>
+  <section class="hero" id="inicio">
+    <h1>Pele que acorda descansada.</h1>
+    <p>Sérum noturno com niacinamida e peptídeos, para usar em 3 passos.</p>
+    <div class="blob"></div>
+  </section>
+  <section class="rotina" id="rotina">
+    <h2>Rotina em 3 passos</h2>
+    <ol><li>Limpe com água morna.</li><li>Aplique 3 gotas do sérum.</li><li>Finalize com hidratante.</li></ol>
+  </section>
+  <section class="produtos" id="produtos">
+    <h2>Escolha o seu</h2>
+    <div class="card" style="left:120px"></div><div class="card" style="left:533px"></div><div class="card" style="left:946px"></div>
+  </section>
+</body>
+</html>

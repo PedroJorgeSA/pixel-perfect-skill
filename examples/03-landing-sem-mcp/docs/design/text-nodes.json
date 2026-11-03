@@ -1,0 +1,148 @@
+{
+  "$comment": "Nós de texto do frame 40:1 (fonte, tamanho, peso, letterSpacing em %, rect no frame). Num projeto real: extraídos da REST API do Figma (style.fontFamily/fontPostScriptName/fontSize/fontWeight/letterSpacing + absoluteBoundingBox).",
+  "size": {
+    "width": 1440
+  },
+  "nodes": [
+    {
+      "id": "40:3",
+      "text": "Pele que acorda descansada.",
+      "font": {
+        "family": "Arial",
+        "style": "Bold"
+      },
+      "size": 72,
+      "weight": 700,
+      "letterSpacing": {
+        "units": "PERCENT",
+        "value": -2
+      },
+      "rect": {
+        "x": 120,
+        "y": 220,
+        "w": 530.640625,
+        "h": 160
+      }
+    },
+    {
+      "id": "40:4",
+      "text": "Sérum noturno com niacinamida e peptídeos, para usar em 3 passos.",
+      "font": {
+        "family": "Arial",
+        "style": "Medium"
+      },
+      "size": 22,
+      "weight": 500,
+      "letterSpacing": {
+        "units": "PERCENT",
+        "value": 0
+      },
+      "rect": {
+        "x": 120,
+        "y": 420,
+        "w": 494.078125,
+        "h": 64
+      }
+    },
+    {
+      "id": "40:5",
+      "text": "Rotina em 3 passos",
+      "font": {
+        "family": "Arial",
+        "style": "Bold"
+      },
+      "size": 48,
+      "weight": 700,
+      "letterSpacing": {
+        "units": "PERCENT",
+        "value": 0
+      },
+      "rect": {
+        "x": 120,
+        "y": 856,
+        "w": 450.828125,
+        "h": 56
+      }
+    },
+    {
+      "id": "40:6",
+      "text": "Limpe com água morna.",
+      "font": {
+        "family": "Arial",
+        "style": "Medium"
+      },
+      "size": 20,
+      "weight": 500,
+      "letterSpacing": {
+        "units": "PERCENT",
+        "value": 5
+      },
+      "rect": {
+        "x": 152,
+        "y": 1015,
+        "w": 236.671875,
+        "h": 22
+      }
+    },
+    {
+      "id": "40:7",
+      "text": "Aplique 3 gotas do sérum.",
+      "font": {
+        "family": "Arial",
+        "style": "Medium"
+      },
+      "size": 20,
+      "weight": 500,
+      "letterSpacing": {
+        "units": "PERCENT",
+        "value": 5
+      },
+      "rect": {
+        "x": 565,
+        "y": 1015,
+        "w": 257.375,
+        "h": 22
+      }
+    },
+    {
+      "id": "40:8",
+      "text": "Finalize com hidratante.",
+      "font": {
+        "family": "Arial",
+        "style": "Medium"
+      },
+      "size": 20,
+      "weight": 500,
+      "letterSpacing": {
+        "units": "PERCENT",
+        "value": 5
+      },
+      "rect": {
+        "x": 978,
+        "y": 1015,
+        "w": 236.328125,
+        "h": 22
+      }
+    },
+    {
+      "id": "40:9",
+      "text": "Escolha o seu",
+      "font": {
+        "family": "Arial",
+        "style": "Bold"
+      },
+      "size": 48,
+      "weight": 700,
+      "letterSpacing": {
+        "units": "PERCENT",
+        "value": 0
+      },
+      "rect": {
+        "x": 120,
+        "y": 1476,
+        "w": 322.78125,
+        "h": 56
+      }
+    }
+  ]
+}

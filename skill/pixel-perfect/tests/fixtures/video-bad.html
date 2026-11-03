@@ -1,0 +1,23 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fixture · vídeo ruim</title>
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f4f4}
+.hero{position:relative;height:80vh}
+.hero video{width:100%;height:100%;object-fit:cover;display:block}
+.glass{position:absolute;padding:8px 14px;border-radius:8px;background:#ffffff33;backdrop-filter:blur(8px)}
+.blend{mix-blend-mode:multiply;width:80px;height:80px;background:#ddd;position:absolute;right:16px;bottom:16px}
+.below{margin-top:2000px;height:400px}
+.below video{width:100%;height:100%;object-fit:cover}
+</style></head><body>
+<section class="hero">
+  <video autoplay loop preload="auto" src="/media/clip.webm"></video>
+  <a class="glass" style="left:16px;bottom:16px">Ver coleção</a>
+  <span class="glass" style="right:16px;top:16px">Novo</span>
+  <span class="glass" style="left:16px;top:16px">Frete grátis</span>
+  <span class="glass" style="left:16px;top:64px">-20%</span>
+  <div class="blend"></div>
+</section>
+<section class="below">
+  <video muted playsinline loop preload="auto" src="/media/clip.webm?below"></video>
+</section>
+</body></html>

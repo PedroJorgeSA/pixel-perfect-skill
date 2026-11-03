@@ -1,0 +1,108 @@
+# Modelo dos portões de CI da skill pixel-perfect (SKILL.md §7).
+# Copie para .github/workflows/design-gates.yml no SEU projeto e ajuste o que tem <…>.
+#
+#   1. static   — segundos, sem browser: tokens e assets só no que o PR mudou + testes da skill
+#   2. browser  — dev server + Chrome: regressão das specs do Figma e orçamento de custo
+#   3. preview  — manual, contra a URL do preview: custo no build real
+#
+# Exit 3 do `pixel.mjs regress` = INFRA (spec com "requires" cuja API externa não respondeu).
+# Não reprova o PR, mas vira aviso: design não verificado ≠ design aprovado.
+name: design-gates
+
+on:
+  pull_request:
+    paths: ["src/**", "public/**", ".claude/skills/pixel-perfect/**", "package.json"]
+  workflow_dispatch:
+    inputs:
+      preview_url:
+        description: "URL de preview para a camada de custo no build"
+        required: false
+
+concurrency:
+  group: design-gates-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  SKILL: .claude/skills/pixel-perfect
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: npm ci
+      - name: Camada 1 · tokens (só linhas do PR)
+        run: node $SKILL/scripts/audit.mjs --base origin/${{ github.base_ref || 'main' }}
+      - name: Camada A · assets e vídeo (só arquivos do PR)
+        run: node $SKILL/scripts/assets.mjs --base origin/${{ github.base_ref || 'main' }}
+      - name: Testes da skill (sem browser)
+        run: node --test $SKILL/tests/media.test.mjs $SKILL/tests/budget.test.mjs $SKILL/tests/figref.test.mjs
+      - run: npm run typecheck
+
+  browser:
+    needs: static
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      CHROME_PATH: /usr/bin/google-chrome
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: npm ci
+      - name: Sobe o dev server (porta das specs)
+        run: |
+          (npm run dev -- --port 5173 --strictPort > dev.log 2>&1 &)
+          for i in $(seq 1 90); do curl -sf http://localhost:5173/ > /dev/null && exit 0; sleep 2; done
+          cat dev.log; exit 1
+      - name: Camada 2 · regressão de estilos (Figma)
+        run: |
+          set +e
+          node $SKILL/scripts/pixel.mjs regress --json .pixel/regress.json --verbose
+          code=$?
+          if [ $code -eq 3 ]; then echo "::warning::Specs sem dados (INFRA): API externa não respondeu — design não verificado"; exit 0; fi
+          exit $code
+      # Só se o projeto tiver os nós de texto extraídos (modo sem MCP):
+      # - name: Camada 2 · tipografia nó a nó
+      #   run: node $SKILL/scripts/figref.mjs texts --url http://localhost:5173/ --spec docs/design/text-nodes.json
+      - name: Camadas T + C · trade-offs e orçamento (3 rodadas)
+        run: node $SKILL/scripts/perf.mjs check --runs 3 --json .pixel/perf/report.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-gates-${{ github.sha }}
+          path: |
+            .pixel/
+            dev.log
+          retention-days: 14
+
+  preview:
+    if: github.event_name == 'workflow_dispatch' && inputs.preview_url != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      CHROME_PATH: /usr/bin/google-chrome
+      PREVIEW_URL: ${{ inputs.preview_url }} # nunca interpolar input direto no shell
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24 }
+      - run: npm ci
+      - name: Smoke · status e TTFB
+        run: |
+          set -euo pipefail
+          case "$PREVIEW_URL" in https://<seu-host-de-preview>/*|https://<seu-host-de-preview>) ;; *) echo "URL fora dos hosts de preview"; exit 1;; esac
+          for p in / /sitemap.xml /robots.txt; do
+            curl -sS --fail -o /dev/null -w "%{http_code} %{content_type} ttfb %{time_starttransfer}s  $p\n" "$PREVIEW_URL$p"
+          done
+      - name: Camada C no build (3 rodadas)
+        run: node $SKILL/scripts/perf.mjs check --base "$PREVIEW_URL" --env build --runs 3 --json .pixel/perf/preview.json
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: design-gates-preview-${{ github.sha }}
+          path: .pixel/

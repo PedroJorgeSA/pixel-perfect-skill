@@ -1,0 +1,14 @@
+/* figma 12:340 · Hero desktop 1440 × 640 */
+* { box-sizing: border-box; margin: 0; }
+body { font-family: Arial, sans-serif; background: var(--color-cream); color: var(--color-ink); }
+.hero { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 64px; height: 640px; padding: 0 120px; }
+.hero__kicker { font-size: 16px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-terracotta); }
+.hero__title { margin-top: 16px; font-size: var(--text-display); line-height: 64px; font-weight: 700; letter-spacing: -0.02em; }
+.hero__body { margin-top: 24px; font-size: var(--text-body); line-height: 30px; max-width: 480px; }
+.hero__cta { display: inline-block; margin-top: 40px; padding: 18px 36px; border-radius: var(--radius-pill); background: var(--color-terracotta); color: var(--color-white); font-size: 18px; font-weight: 700; text-decoration: none; }
+.hero__photo { height: 480px; border-radius: 24px; background: var(--color-terracotta); opacity: 0.85; }
+@media (max-width: 767px) {
+  .hero { grid-template-columns: 1fr; height: auto; gap: 32px; padding: 48px 24px; }
+  .hero__title { font-size: 40px; line-height: 46px; }
+  .hero__photo { height: 280px; }
+}

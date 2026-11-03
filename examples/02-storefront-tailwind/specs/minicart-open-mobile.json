@@ -1,0 +1,11 @@
+{
+  "$comment": "Estado que só existe depois de uma interação: 'before' abre a sacola antes de medir.",
+  "url": "http://localhost:5173/",
+  "width": 375,
+  "before": "document.querySelector('[data-open-minicart]').click();",
+  "beforeWait": 400,
+  "checks": [
+    { "name": "drawer · largura", "node": "1310:4", "selector": "[data-minicart]", "expect": { "width": "375px", "doc-left": "0px" } },
+    { "name": "drawer · título", "node": "1310:9", "selector": "[data-minicart] h2", "text": "Sacola", "expect": { "font-size": "24px", "letter-spacing": "-0.24px" } }
+  ]
+}

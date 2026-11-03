@@ -1,0 +1,8 @@
+{
+  "url": "http://127.0.0.1:4400/site/",
+  "width": 390,
+  "checks": [
+    { "name": "título (mobile)", "node": "12:616", "selector": ".hero__title", "expect": { "font-size": "40px", "line-height": "46px" } },
+    { "name": "foto (mobile)", "node": "12:630", "selector": ".hero__photo", "expect": { "height": "280px", "width": "342px" } }
+  ]
+}

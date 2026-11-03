@@ -1,0 +1,16 @@
+{
+  "devServer": false,
+  "profiles": {
+    "mobile": { "width": 402, "height": 874, "cpu": 4, "network": "slow4g" },
+    "desktop": { "width": 1512, "height": 900, "cpu": 1, "network": "none" }
+  },
+  "pages": [
+    { "name": "good", "path": "/video-good.html", "profiles": ["mobile"] },
+    { "name": "bad", "path": "/video-bad.html", "profiles": ["mobile"] }
+  ],
+  "budgets": {
+    "mobile": { "lcpMs": 8000, "cls": 0.1, "bytes": { "image": 300000, "media": 0 } },
+    "desktop": { "lcpMs": 4000, "cls": 0.1, "bytes": { "image": 300000, "media": 0 } }
+  },
+  "assets": { "imageMaxBytes": 300000, "imageMaxSide": 2560, "pngOpaqueMaxBytes": 100000, "videoMaxBytes": 4000000, "orphanMaxBytes": 1000000 }
+}

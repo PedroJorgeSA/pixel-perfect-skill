@@ -1,0 +1,19 @@
+/* Desktop escala com a largura: px do frame de 1440 → calc(N / 1440 * 100cqw). */
+:root { --cream: #fbf6ee; --ink: #2e2a26; --clay: #e9a27a; --rust: #b5532d; --sand: #f1e3cf; --stone: #4a433c; }
+* { box-sizing: border-box; margin: 0; }
+body { font-family: Arial, sans-serif; background: var(--cream); color: var(--ink); }
+.page { container-type: inline-size; }
+section { position: relative; }
+.rich-text p { font-weight: 400; } /* rich text do CMS fixa 400 (armadilha 11) */
+.hero { height: calc(760 / 1440 * 100cqw); }
+.hero h1 { position: absolute; left: calc(120 / 1440 * 100cqw); top: calc(220 / 1440 * 100cqw); width: calc(640 / 1440 * 100cqw); font-size: calc(72 / 1440 * 100cqw); line-height: calc(80 / 1440 * 100cqw); font-weight: 700; letter-spacing: -0.02em; }
+.hero .rich-text { position: absolute; left: calc(120 / 1440 * 100cqw); top: calc(432 / 1440 * 100cqw); width: calc(520 / 1440 * 100cqw); font-size: calc(22 / 1440 * 100cqw); line-height: calc(32 / 1440 * 100cqw); font-weight: 500; }
+.hero .blob { position: absolute; right: calc(120 / 1440 * 100cqw); top: calc(120 / 1440 * 100cqw); width: calc(520 / 1440 * 100cqw); height: calc(520 / 1440 * 100cqw); border-radius: 999px; background: var(--clay); }
+.rotina { height: calc(620 / 1440 * 100cqw); background: var(--ink); color: var(--cream); }
+.rotina h2 { position: absolute; left: calc(120 / 1440 * 100cqw); top: calc(96 / 1440 * 100cqw); font-size: calc(48 / 1440 * 100cqw); line-height: calc(56 / 1440 * 100cqw); font-weight: 700; }
+.rotina ol { position: absolute; left: calc(120 / 1440 * 100cqw); top: calc(220 / 1440 * 100cqw); display: flex; gap: calc(40 / 1440 * 100cqw); padding: 0; list-style: none; letter-spacing: 0.05em; }
+.rotina li { width: calc(373 / 1440 * 100cqw); height: calc(300 / 1440 * 100cqw); padding: calc(32 / 1440 * 100cqw); border-radius: calc(24 / 1440 * 100cqw); background: var(--stone); font-size: calc(20 / 1440 * 100cqw); line-height: calc(28 / 1440 * 100cqw); font-weight: 500; }
+.rotina li span { font-size: calc(20 / 1440 * 100cqw); }
+.produtos { height: calc(680 / 1440 * 100cqw); }
+.produtos h2 { position: absolute; left: calc(120 / 1440 * 100cqw); top: calc(96 / 1440 * 100cqw); font-size: calc(48 / 1440 * 100cqw); line-height: calc(56 / 1440 * 100cqw); font-weight: 700; color: var(--rust); }
+.produtos .card { position: absolute; left: calc(var(--x) / 1440 * 100cqw); top: calc(220 / 1440 * 100cqw); width: calc(373 / 1440 * 100cqw); height: calc(380 / 1440 * 100cqw); border-radius: calc(24 / 1440 * 100cqw); background: var(--sand); }

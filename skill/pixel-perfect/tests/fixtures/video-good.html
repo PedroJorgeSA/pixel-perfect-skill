@@ -1,0 +1,32 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>fixture · vídeo bom</title>
+<link rel="preload" as="image" href="/media/poster.jpg" fetchpriority="high">
+<style>
+body{margin:0;font-family:sans-serif;background:#f4f4f4}
+.hero{position:relative;height:80vh}
+.hero video{width:100%;height:100%;object-fit:cover;display:block}
+.glass{position:absolute;padding:8px 14px;border-radius:8px;background:#ffffff33;backdrop-filter:blur(8px)}
+.below{margin-top:2000px;height:400px}
+.below video{width:100%;height:100%;object-fit:cover}
+</style></head><body>
+<section class="hero">
+  <video autoplay muted playsinline loop preload="metadata" poster="/media/poster.jpg" width="1280" height="720">
+    <source src="/media/clip.webm" type="video/webm">
+  </video>
+  <script>
+    // prefers-reduced-motion: fica no poster e não baixa o vídeo
+    (() => { const v = document.currentScript.previousElementSibling;
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.autoplay = false; v.removeAttribute('autoplay'); v.preload = 'none'; v.pause(); } })();
+  </script>
+  <a class="glass" style="left:16px;bottom:16px">Ver coleção</a>
+  <span class="glass" style="right:16px;top:16px">Novo</span>
+</section>
+<section class="below">
+  <video muted playsinline loop preload="none" poster="/media/poster.jpg" width="1280" height="720" data-src="/media/clip.webm?below"></video>
+  <script>
+    // abaixo da dobra: só ganha src quando entra na tela
+    (() => { const v = document.currentScript.previousElementSibling;
+      new IntersectionObserver((es, io) => { if (es[0].isIntersecting) { v.src = v.dataset.src; v.play(); io.disconnect(); } }, { rootMargin: '200px' }).observe(v); })();
+  </script>
+</section>
+</body></html>
