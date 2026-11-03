@@ -51,7 +51,13 @@ const runPage = async (name) => {
     "--json",
     out,
   );
-  return { ...r, report: JSON.parse(readFileSync(out, "utf8")) };
+  let report;
+  try {
+    report = JSON.parse(readFileSync(out, "utf8"));
+  } catch {
+    assert.fail(`perf.mjs run não gerou ${name}.json (exit ${r.code})\n${r.stderr.slice(-2000)}`);
+  }
+  return { ...r, report };
 };
 
 test(

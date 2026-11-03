@@ -59,7 +59,12 @@ export async function openBrowser({ gpu = false } = {}) {
     });
   const port = await new Promise((ok, fail) => {
     let buf = "";
-    const t = setTimeout(() => fail(new Error("Chrome não abriu a porta de debug")), 15000).unref();
+    // 1ª abertura num runner de CI limpo (cache de fontes/perfil) passa de 15 s.
+    const wait = Number(process.env.CHROME_START_TIMEOUT ?? 60000);
+    const t = setTimeout(
+      () => fail(new Error(`Chrome não abriu a porta de debug em ${wait} ms\n${buf.slice(-2000)}`)),
+      wait,
+    ).unref();
     proc.stderr.on("data", (d) => {
       buf += d;
       const m = buf.match(/DevTools listening on ws:\/\/[^:]+:(\d+)\//);
